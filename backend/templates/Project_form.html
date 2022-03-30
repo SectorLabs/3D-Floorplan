@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style type="text/css">
+        hr.solid {
+            border-top: 3px solid #bbb;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>3d Floor Panel Projects</h2>
+        <form method="post" enctype="multipart/form-data" class="p-3">
+            <h3>Projects</h3>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ Prj_form.as_p }}
+            </div>
+            <button class="btn btn-primary" type="submit" value="Next" name="PrjSaveButton">Save</button>
+            <button class="btn btn-primary" type="submit" value="Next" name="PrjSaveButton">Next</button>
+        </form>
+        <hr class="solid">
+
+        <form action="" method="POST">
+            <h3>Inventry Groups</h3>
+
+            {% csrf_token %}
+            <div class="form-group">
+                {{ InvGrp_form.as_p }}
+            </div>
+            <button class="btn btn-primary" type="submit" name="GrpSaveButton">Save</button>
+            <button class="btn btn-primary" type="submit" name="GrpSaveButton">Next</button>
+        </form>
+        <hr class="solid">
+
+        <form action="" method="POST">
+            <h3>Projects Inventry</h3>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ Inv_form.as_p }}
+            </div>
+            <button class="btn btn-primary" type="submit" name="InvSaveButton">Save</button>
+            <button class="btn btn-primary" type="submit" name="InvSaveButton">Next</button>
+        </form>
+        <hr class="solid">
+
+        <form action="" method="POST">
+            <h3>Images</h3>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ Img_Form.as_p }}
+            </div>
+            <button class="btn btn-primary" type="submit" name="ImgSaveButton">Save</button>
+            <button class="btn btn-primary" type="submit" name="ImgSaveButton">Next</button>
+        </form>
+
+
+    </div>
+
+
+
+
+    {% if msg %}
+    <h2>{{msg | upper}}</h2>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>

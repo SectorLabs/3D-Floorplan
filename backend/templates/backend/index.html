@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load custom_templates %}
+<!-- <p>{{views}}</p> -->
+
+<div class="wrapper d-flex align-items-stretch">
+   <nav id="sidebar">
+      <div class="custom-menu">
+         <button type="button" id="sidebarCollapse" class="btn btn-primary close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <p id="all-unit-text">SEE ALL UNITS</p>
+         </button>
+      </div>
+      <div class="img bg-wrap text-center py-4" style="background-image: url({{all.project.project_image}});">
+         <div class="user-logo">
+            <h3>{{all.project.project_title}}</h3>
+         </div>
+      </div>
+      <!-- updated new -->
+      <ul class="list-unstyled components mb-5 menuClass" id="models_list_leftpanel">
+         {% for inventory in all.project.inventory_details %}
+         {% if forloop.counter0 == 0 %}
+         <li class="active">
+            <a href='{{ inventory.project_inventory.name|sethref:" " }}' onclick="
+               changeIframeModel('{{inventory.project_inventory.inventory_id}}')" id={{
+               inventory.project_inventory.name|setid:" " }}>{{inventory.project_inventory.name}}</a>
+                  </li>
+               {% else %}
+                  {% if inventory.project_inventory.group == True %}
+                  <script>console.log(" I am in group : " + '{{ inventory.project_inventory.inventory_id }}')</script>
+         <li>
+            <a href='{{ inventory.project_inventory.name|sethref:" " }}' data-toggle=" collapse" aria-expanded="false"
+               class="dropdown" onclick="changeIframeModel('{{inventory.project_inventory.inventory_id}}')" id={{
+               inventory.project_inventory.name|setid:" " }}> {{inventory.project_inventory.name}} </a>
+            
+          <ul class=" collapse list-unstyled" id="penthousetypeb">
+               <!-- <h1>{{group.inventory_group.instance_id|strip}} </h1> -->
+               {% for group in inventory.project_inventory.group_details %}
+               {% if group.inventory_group.instance_id|strip != "None" %}
+         <li>
+            <a href="#" class="groundfloor">Lower Floor</a>
+         </li>
+         <li>
+            <a href="#" class="firstfloor">Upper Floor</a>
+         </li>
+
+         <li>
+            <a href="#" class="fullview">Complete</a>
+         </li>
+         {% endif %}
+         <!-- <li>
+                                 <a href="#" class={{ inventory.project_inventory.name|setid:" " }}>{{ group.inventory_group.group_name}}</a>
+                              </li> -->
+         {% endfor %}
+      </ul>
+      </li>
+      {% else %}
+      <li>
+         <a href={{ inventory.project_inventory.name|sethref:" " }} onclick="
+            changeIframeModel('{{inventory.project_inventory.inventory_id}}')" id={{
+            inventory.project_inventory.name|setid:" " }}>{{inventory.project_inventory.name}}</a>
+                     </li>
+                  {% endif %}
+               {% endif %}
+               {% endfor %}
+         </ul>
+         <div>
+            <img src=" {% static 'backend/images/zameen_logo_black.png' %}" class="img-fluid" alt="Responsive image">
+</div>
+</nav>
+
+<!-- <div class="full-screen">
+         <img class="img-fullscreen" id="img-fullscreen" src="img/Group 8434.svg"></img>
+      </div> -->
+
+<button class="selected_apartment_name" value="Test" id="selected_apartment_name">Studio Apartment Type A</button>
+<div id="sidebar-right" class="sidebar-right">
+   <button class="share_button" id="share_model" onclick="shareModel()" value="Share"><img class="share_button_url"
+         src="{% static 'backend/img/Share_button_black.svg' %}">Share</button>
+
+   <div class="floor_toggle">
+      <button class="lower_floor" id="lower_floor" value="lower-floor">Lower Floor</button>
+      <button class="upper_floor" id="upper_floor" value="upper-floor">Upper Floor</button>
+
+   </div>
+   <div class="project-logo">
+      <a href="https://www.zameen.com/new-projects/business_hub-1969.html#walk_through_popup" target="_blank">
+         <img class="img-icon" id="fullscreen" src={{all.project.project_logo}}></img>
+      </a>
+   </div>
+   <div class="project-views" id="scenes">
+      <div class="full-view">
+         <!-- /images/media/Fullview.JPG -->
+         <img class="img-icon-project-view" onclick="setDropdown(0,'full_view')" src="{{all.project.project_logo}}"
+            id="apartment_rightpanel">
+         <h5> Full View </h5>
+         <hr>
+
+      </div>
+      <hr>
+      <div class="annotation-views" id="annotation-views">
+      </div>
+   </div>
+</div>
+<!-- end of right side bar panel -->
+<!-- Page Content  -->
+<div id="content" class="p-4 p-md-5 pt-5">
+   <div class="app" style="height: 100%;width: 100%;">
+      <div class="panel" style="height: 100%;width: 100%;">
+         <div class="viewer" style="height: 100%;width: 100%;">
+            <iframe src="" class="iframe_sketchfab" id="api-frame" allowfullscreen mozallowfullscreen="true"
+               webkitallowfullscreen="true"></iframe>
+            <div class="btn-group dropup dropupClass">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="alert warning" id="warning">
+   <span class="closebtn">&times;</span>
+   <strong>Notice!</strong> Link is copied to Clipboard.
+</div>
+<input type="text" value="" id="myInput" style="z-index: -1;position: absolute; border: none;" readonly>
+<button id="mobile-select-view" value="Select View" class="select-view-mobile">Select View</button>
+<input type="button" class="btn btn-secondary dropdown-toggle autostart" id="auto-pilot" value="Start Animation" />
+</div>
+
+{% endblock %}
