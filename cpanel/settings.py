@@ -2,6 +2,10 @@
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -91,13 +95,21 @@ WSGI_APPLICATION = 'cpanel.wsgi.application'
     } """
 
 
+Django_Host = os.getenv('Host')
+Postgre_databse = os.getenv('Database_Name')
+Postgre_User = os.getenv('User')
+Database_Password = os.getenv('Password')
+
+print(Django_Host)
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'sketchfab_cpanel',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'NAME': Postgre_databse,
+        'USER': Postgre_User,
+        'PASSWORD': Database_Password,
+        'HOST': Django_Host,
         'PORT': '5433',
     }
 }
