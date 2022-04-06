@@ -99,8 +99,8 @@ Django_Host = os.getenv('Host')
 Postgre_databse = os.getenv('Database_Name')
 Postgre_User = os.getenv('User')
 Database_Password = os.getenv('Password')
-
-print(Django_Host)
+Port = os.getenv('PORT')
+# print(Django_Host)
 
 
 DATABASES = {
@@ -110,7 +110,7 @@ DATABASES = {
         'USER': Postgre_User,
         'PASSWORD': Database_Password,
         'HOST': Django_Host,
-        'PORT': '5433',
+        'PORT': Port,
     }
 }
 
