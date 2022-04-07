@@ -111,6 +111,7 @@ DATABASES = {
         'PASSWORD': Database_Password,
         'HOST': Django_Host,
         'PORT': Port,
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
 
