@@ -104,58 +104,59 @@ def AddProject(request):
 
 def get_project(request):
     # if this is a POST request we need to process the form data
-    Prj_form = ProjectForm(request.POST, request.FILES)
-    InvGrp_form = InnentryGroupForm(request.POST, request.FILES)
-    Inv_form = ProjectInventoryForm(request.POST, request.FILES)
-    Img_Form = ImageForm(request.POST, request.FILES)
-    # for inside the project page main
-    if request.method == 'POST' and request.FILES and 'PrjSaveButton' in request.POST:
-        # create a form instance and populate it with data from the request:
+    #     Prj_form = ProjectForm(request.POST, request.FILES)
+    #     InvGrp_form = InnentryGroupForm(request.POST, request.FILES)
+    #     Inv_form = ProjectInventoryForm(request.POST, request.FILES)
+    #     Img_Form = ImageForm(request.POST, request.FILES)
+    #     # for inside the project page main
+    #     if request.method == 'POST' and request.FILES and 'PrjSaveButton' in request.POST:
+    #         # create a form instance and populate it with data from the request:
 
-        # check whether it's valid:
-        if Prj_form.is_valid():
-            Prj_form.save()
-            # return render(request, 'Project_form.html', { "msg": "Project Added Successfully!"})
-        else:
-            print(Prj_form.errors)
-            return HttpResponse('<h1>Form is not valid</h1>')
+    #         # check whether it's valid:
+    #         if Prj_form.is_valid():
+    #             Prj_form.save()
+    #             # return render(request, 'Project_form.html', { "msg": "Project Added Successfully!"})
+    #         else:
+    #             print(Prj_form.errors)
+    #             return HttpResponse('<h1>Form is not valid</h1>')
 
-# for inside project inventry group
-    if request.method == 'POST' and 'GrpSaveButton' in request.POST:
-        # check whether it's valid:
+    # # for inside project inventry group
+    #     if request.method == 'POST' and 'GrpSaveButton' in request.POST:
+    #         # check whether it's valid:
 
-        if InvGrp_form.is_valid():
-            InvGrp_form.save()
-            # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
-        else:
-            print(InvGrp_form.errors)
-            return HttpResponse('<h1>Form is not valid</h1>')
+    #         if InvGrp_form.is_valid():
+    #             InvGrp_form.save()
+    #             # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
+    #         else:
+    #             print(InvGrp_form.errors)
+    #             return HttpResponse('<h1>Form is not valid</h1>')
 
-    if request.method == 'POST' and 'InvSaveButton' in request.POST:
-        # check whether it's valid:
+    #     if request.method == 'POST' and 'InvSaveButton' in request.POST:
+    #         # check whether it's valid:
 
-        if Inv_form.is_valid():
-            Inv_form.save()
-            # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
-        else:
-            print(Inv_form.errors)
-            return HttpResponse('<h1>Form is not valid</h1>')
+    #         if Inv_form.is_valid():
+    #             Inv_form.save()
+    #             # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
+    #         else:
+    #             print(Inv_form.errors)
+    #             return HttpResponse('<h1>Form is not valid</h1>')
 
-    if request.method == 'POST' and 'ImgSaveButton' in request.POST:
-        # check whether it's valid:
+    #     if request.method == 'POST' and 'ImgSaveButton' in request.POST:
+    #         # check whether it's valid:
 
-        if Img_Form.is_valid():
-            Img_Form.save()
-            # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
-        else:
-            print(Img_Form.errors)
-            return HttpResponse('<h1>Form is not valid</h1>')
+    #         if Img_Form.is_valid():
+    #             Img_Form.save()
+    #             # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, "msg": "Inventry Group Added Successfully!"})
+    #         else:
+    #             print(Img_Form.errors)
+    #             return HttpResponse('<h1>Form is not valid</h1>')
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        Prj_form = ProjectForm()
+    #     # if a GET (or any other method) we'll create a blank form
+    #     else:
+    #         Prj_form = ProjectForm()
 
-    return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, 'Prj_form': Prj_form, 'Inv_form': Inv_form, "Img_Form": Img_Form, "msg": " "})
+    # return render(request, 'Project_form.html', {'InvGrp_form': InvGrp_form, 'Prj_form': Prj_form, 'Inv_form': Inv_form, "Img_Form": Img_Form, "msg": " "})
+    return render(request, 'frontend/index.html')
 
 
 def Project(request):
