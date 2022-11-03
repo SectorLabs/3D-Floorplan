@@ -31,8 +31,8 @@
                   <script>console.log(" I am in group : " + '{{ inventory.project_inventory.inventory_id }}')</script>
          <li>
             <a href='{{ inventory.project_inventory.name|sethref:" " }}' onclick="
-               changeIframeModel('{{inventory.project_inventory.inventory_id}}')" data-toggle=" collapse" aria-expanded="false"
-               class="dropdown" id={{ inventory.project_inventory.name|setid:" " }}> {{inventory.project_inventory.name}} </a>
+               changeIframeModel('{{inventory.project_inventory.inventory_id}}')" data-toggle=" collapse"
+               aria-expanded="false" class="dropdown" id={{ inventory.project_inventory.name|setid:" " }}> {{inventory.project_inventory.name}} </a>
             
           <ul class=" collapse list-unstyled" id="penthousetypeb">
                <!-- <h1>{{group.inventory_group.instance_id|strip}} </h1> -->
@@ -85,7 +85,7 @@
 
    </div>
    <div class="project-logo">
-      <a href="https://www.zameen.com/new-projects/business_hub-1969.html#walk_through_popup" target="_blank">
+      <a href="#" target="_blank">
          <img class="img-icon" id="fullscreen" src={{all.project.project_logo}}></img>
       </a>
    </div>
